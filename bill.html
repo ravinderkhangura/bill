@@ -1,0 +1,459 @@
+<html>
+
+<head>
+    <title>Bill</title>
+    
+   <style type="text/css">
+    
+    
+    #base
+       {
+           height: 550px;
+           width: 400px;
+           background-color: darkgray;
+           box-shadow: 3px 3px 2px black;
+           margin: auto;
+           border-radius: 20px;
+           
+       }
+     
+    #head
+       {
+           width: 400px;
+           color: black;
+           background-color:  darkgray;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+        padding-top: 30px;
+           border-top-right-radius: 20px;
+           border-top-left-radius: 20px;
+       }
+       
+       
+       
+       #mp
+       {
+           width: 400px;
+           height: 125px;
+           background-color:  darkgray;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+       }
+ 
+       #m
+       {
+           width: 200px;
+           background-color:  darkgray;
+           height: 125px;
+           text-align: center;
+       }
+       
+        #p
+       {  text-align: center;
+           width: 200px;
+           background-color:  darkgray;
+           height: 125px;
+           
+       }
+       
+        #selected
+       {
+        width: 400px;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+           background-color:  darkgray;
+           margin-top: 20px;
+       }
+          #smp
+       {
+           width: 400px;
+           height: 125px;
+           background-color:  darkgray;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+       }
+ 
+       #sm
+       {
+           width: 200px;
+           background-color:  darkgray;
+           height: 125px;
+           text-align: center;
+       }
+       
+        #sp
+       {  text-align: center;
+           width: 200px;
+           background-color:  darkgray;
+           height: 125px;
+           
+       }
+       
+       #donebtn
+       {
+        width: 400px;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+           background-color:  darkgray;
+       }
+       
+           #billbtn
+       {
+        width: 400px;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+           background-color:  darkgray;
+           margin-top: 20px;
+       }
+       
+       #bill
+       {
+           margin-left: 20px;
+       }
+       
+       button
+       {
+           background-color: orange;
+           border-radius: 20px;
+           color: white;
+           box-shadow: 3px 3px 3px black;
+         
+       }
+       
+       select
+       {
+           background-color: #808080;
+           border-radius: 10px;
+           outline: none;
+           box-shadow: 3px 3px 3px black;
+           width: 125px;
+       }
+       
+       option
+       {
+           color: white;
+           border-radius: 10px;
+        
+           
+       }
+       
+       label
+       {
+           color: #cc6600;
+       }
+       
+       
+    </style>
+    <script type="application/javascript">
+        
+        var sum= 0;
+    
+        function del()
+        {
+            
+            
+        }
+        
+    function getItem(val)
+        {
+          
+        
+            var blist=["1. aloo-tikki","2. double-tikki","3. noodle-burger","4. pneer-burger","5. cheese-burger","6. chicken-burger"];
+            var bprice=["40","50","40","60","50","60"];
+            var plist=["1.farm-fresh","2.margarita","3.sweetcorn","4.pepi-pneer","5.onion","6.capsicum"];
+            var pprice=["100","100","90","150","50","50"];
+            var mod= document.getElementById("model");
+            var pri=document.getElementById("price");
+            
+         while(mod.firstChild)
+             {
+                 mod.removeChild(mod.firstChild);
+             }
+                
+         while(pri.firstChild)
+             {
+                 pri.removeChild(pri.firstChild);
+             }
+           
+            
+                
+                
+            if(val=="burger")
+                {
+                    for(i=0;i<6;i++)
+                  {  
+                    var bl= blist[i];
+                      var bp= bprice[i];
+                     
+                      var el =document.createElement("option");
+                      var pl =document.createElement("option");
+                     
+                      pl.textContent=bp;
+                      pl.value=bp;
+                     
+                      el.textContent=bl;
+                      el.value=bp;
+                     
+                      mod.appendChild(el);
+                      pri.appendChild(pl);
+                  }
+                    
+                }
+            
+              if(val=="pizza")
+                {
+                
+                    for(i=0;i<6;i++)
+                  {  
+                    
+                      var pp= pprice[i];
+                    
+                      var el =document.createElement("option");
+                        var pl =document.createElement("option");
+                     
+                       pl.textContent=pp;
+                      pl.value=pp;
+                     
+                      el.textContent=plist[i]; 
+                      el.value=pp;
+                    
+                      mod.appendChild(el);
+                      pri.appendChild(pl);
+                  
+                }
+            
+            
+            
+        }
+    
+        }
+        
+        
+        
+        function doSelect()
+        {
+            var mod= document.getElementById("model");
+            var sitem=document.getElementById("smodel");
+            var iprice=document.getElementById("sprice");
+            
+            
+            
+            for(i=0;i<=6;i++)
+                {
+                    if(mod[i].selected==true)
+                        {
+                            var el=document.createElement("option");
+                            var pl=document.createElement("option");
+                            
+                            el.textContent=mod[i].innerHTML;
+                            el.value= mod[i].value;
+                            
+                            pl.textContent=mod[i].value;
+                            pl.value= mod[i].value;
+                            
+                            sitem.appendChild(el);
+                            iprice.appendChild(pl);
+                            
+                        }
+                    
+                    
+                }
+            
+        }
+    
+        
+        function doBill()
+        {
+        
+            var mod=document.getElementById("smodel");
+            
+            
+            for(i=0;i<smodel.length;i++)
+                {
+                   
+                    sum=sum+eval(mod[i].value);
+                    
+                }
+            
+            document.getElementById("bill").innerHTML=sum+"Rupees";
+            
+            
+            
+        }
+        
+        
+        function doDel()
+        { 
+            var mod = document.getElementById("smodel");
+            var p= document.getElementById("sprice");
+            
+            var ref = mod.selectedIndex;
+             
+            mod.remove(ref);
+            p.remove(ref);
+            
+        }
+        
+        
+        function doSel()
+        {
+             var mod = document.getElementById("model");
+            var p= document.getElementById("price");
+            
+            var ref = mod.selectedIndex;
+            
+            p.selectedIndex=ref;
+            
+        }
+        
+            
+        function doSels()
+        {
+             var mod = document.getElementById("smodel");
+            var p= document.getElementById("sprice");
+            
+            var ref = mod.selectedIndex;
+            
+            p.selectedIndex=ref;
+            
+        }
+        
+        
+     function doDiscount(tper,fper)
+        
+        {
+            var chk=0;
+            var off=0;
+            var netb=0;
+            
+            if(tper.checked==true)
+                chk=parseFloat(tper.value);
+            else 
+                if(fper.checked==true)
+                    chk=parseFloat(fper.value);
+            
+            off=chk/100;
+            
+            netb= sum-off;
+            
+            document.getElementById("discount").innerHTML="Discount = "+off;
+            document.getElementById("net").innerHTML="Net Bill = "+netb;
+            
+            
+            
+            
+        }
+        
+    </script>
+    
+    
+    
+    </head>
+
+<body>
+    <div id="base">
+    
+        <div id="head"><label margin-right="10px;">Item</label>
+            <select id="items" onchange="getItem(value);">
+            <option value="">Select</option>    
+            <option value="burger">Burger</option>
+            <option value="pizza">Pizza</option>
+        
+            
+            </select> 
+        
+        </div>
+        
+        <div id="mp" >
+            
+            <div id="m">Model
+            <p>
+                <select id="model" size="5" multiple  onchange="doSel();"> </select>
+                </p>
+            
+            </div>
+            
+        
+           <div id="p">Price
+             <p>
+                <select id="price" size="5" multiple>
+                   
+                
+                
+                </select>
+                
+            </div>   
+        
+        </div>
+        
+  
+          <div id="donebtn"><button onclick="doSelect();" >Done</button></div>
+        
+        <div id="selected">Selected</div>
+        
+        
+     <div id="smp" >
+
+            <div id="sm">Model
+            <p>
+                <select id="smodel" size="5" multiple  ondblclick="doDel();" onchange="doSels(); "> </select>
+                </p>
+            
+            </div>
+            
+        
+           <div id="sp">Price
+             <p>
+                <select id="sprice" size="5" multiple >
+                   
+                
+                
+                </select>
+                
+            </div>   
+        
+        </div>
+        
+        <div id="billbtn"><button onclick="doBill();">Bill</button> <div id="bill">*</div></div>
+    
+    
+        <p>Discount:</p>
+        <p>
+        <input type="radio" id="tper" name="dis" value="10"><label for="tper">10%</label>
+            <input type="radio" id="fper" name="dis" value="15"><label for="fper">15%</label>
+            
+            <button onclick="doDiscount(tper,fper);">ok</button>
+            
+        </p>
+        
+        <div id="discount"> </div>
+        <div id="net"></div>
+        
+    
+        
+        
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    </body>
+    
+    
+    
+
+
+
+</html>
+
